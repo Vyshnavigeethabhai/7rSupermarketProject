@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
+import com.sun.net.httpserver.Authenticator.Retry;
+
 import constants.Constant;
 import pages.Home_Action;
 import pages.Login_action;
@@ -16,7 +18,7 @@ public class ManageNewsTest extends Baseclass{
 	public Home_Action homepage;
 	public ManageNews_action managenews;
 	
-  @Test
+  @Test(retryAnalyzer=retrypackage.Retry.class)
   public void VerifyUserAbleToAddNews() throws IOException {
 	  String Username=ExcelUtility.readStringData(1, 0,"LoginTest" );
 	  String Password=ExcelUtility.readStringData(1, 1,"LoginTest" );

@@ -60,8 +60,8 @@ public class login_test extends Baseclass {
 	  Login_action log=new Login_action(driver);
 	  log.enterUsernameandPasswordField("admin","admi");
 	 log.click_submit();
-	  boolean warningpopupshown=log.isAlertShown();
-	  assertTrue(warningpopupshown, Constant.ALERTMESSAGEIVALIDPASSWORD);
+	 boolean warningpopupshown=log.isAlertShown();
+	 assertTrue(warningpopupshown, Constant.ALERTMESSAGEIVALIDPASSWORD);
 	log.alertclick();
 	 
   }

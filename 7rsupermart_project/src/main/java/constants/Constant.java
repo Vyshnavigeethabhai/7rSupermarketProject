@@ -14,6 +14,7 @@ public static final String SUBCATEGORYIMAGE=System.getProperty("user.dir")+"\\sr
 public static final String SUBCATEGORYALERT="AlertNotDisplayed";
 public static final String SUBCATEGORYRESULTSHOWN="SearchResultNotDisplayed";
 public static final String MANAGENEWSALERT="Alert for News Is Not Displayed";
+public static final String CONFIGFILE=System.getProperty("user.dir")+"\\src\\test\\resources\\config.properties";
 }
 
 
