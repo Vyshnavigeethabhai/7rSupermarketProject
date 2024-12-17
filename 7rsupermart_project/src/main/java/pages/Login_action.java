@@ -17,50 +17,56 @@ import utilities.WaitUtility;
 
 public class Login_action {
 	public WebDriver driver;
+
 	public Login_action(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements( driver,this);
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-		@FindBy(xpath="//input[@name='username']")WebElement username;
-		@FindBy(xpath="//input[@name='password']")WebElement password;
-		@FindBy(xpath="//button[@type='submit']")WebElement submitbutton;
-		@FindBy(xpath="//a[text()='Home']")WebElement homepage;
-		@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")WebElement alertmessage;
-		@FindBy(xpath="//button[@class='close']")WebElement warning;
-	
-	public Login_action enterUsernameandPasswordField(String usernamefield,String passwordfield) {
+
+	@FindBy(xpath = "//input[@name='username']")
+	WebElement username;
+	@FindBy(xpath = "//input[@name='password']")
+	WebElement password;
+	@FindBy(xpath = "//button[@type='submit']")
+	WebElement submitbutton;
+	@FindBy(xpath = "//a[text()='Home']")
+	WebElement homepage;
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+	WebElement alertmessage;
+	@FindBy(xpath = "//button[@class='close']")
+	WebElement warning;
+
+	public Login_action enterUsernameandPasswordField(String usernamefield, String passwordfield) {
 		username.sendKeys(usernamefield);
 		password.sendKeys(passwordfield);
 		return this;
 	}
+
 	public Home_Action click_submit() {
-		WaitUtility utility=new WaitUtility();
+		WaitUtility utility = new WaitUtility();
 		utility.waitForElementClickable(driver, submitbutton);
 		submitbutton.click();
 		return new Home_Action(driver);
-		
+
 	}
+
 	public boolean isHomepageloaded() {
-		try
-		{
-		return homepage.isDisplayed();
-		}
-		catch (NoSuchElementException e)
-		{
-		return false;
+		try {
+			return homepage.isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
 		}
 	}
-public boolean isAlertShown() {
-	try
-	{
-	return alertmessage.isDisplayed();
+
+	public boolean isAlertShown() {
+		try {
+			return alertmessage.isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
-	catch (NoSuchElementException e)
-	{
-	return false;
-}
-}	
-public void alertclick() {
-warning.click();
-}
+
+	public void alertclick() {
+		warning.click();
+	}
 }

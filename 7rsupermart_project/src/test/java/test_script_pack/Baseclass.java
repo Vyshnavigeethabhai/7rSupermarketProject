@@ -2,8 +2,6 @@ package test_script_pack;
 
 import org.testng.annotations.Test;
 
-import com.sun.org.apache.xml.internal.security.utils.Constants;
-
 import constants.Constant;
 import utilities.ScreenshotUtility;
 
@@ -25,13 +23,13 @@ import org.testng.annotations.AfterMethod;
 
 public class Baseclass {
 	public WebDriver driver;
-	public  Properties properties;
+	public Properties properties;
 	public FileInputStream fis;
-  
-  @BeforeMethod
-  @Parameters("browzer")
-  public void beforeMethod(String browzer) throws Exception {
-	  try {
+
+	@BeforeMethod
+	@Parameters("browzer")
+	public void beforeMethod(String browzer) throws Exception {
+		try {
 			properties = new Properties();
 			fis = new FileInputStream(Constant.CONFIGFILE);
 			properties.load(fis);
@@ -49,19 +47,19 @@ public class Baseclass {
 			throw new Exception("invalid browser");
 		}
 		driver.get(properties.getProperty("url"));
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		    
-  }
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-  @AfterMethod
-  public void afterMethod(ITestResult itResult) throws IOException {
-	  if (itResult.getStatus() == ITestResult.FAILURE) {
+	}
+
+	@AfterMethod
+	public void afterMethod(ITestResult itResult) throws IOException {
+		if (itResult.getStatus() == ITestResult.FAILURE) {
 			ScreenshotUtility sc = new ScreenshotUtility();
 			sc.captureFailureScreenShot(driver, itResult.getName());
 		}
 		if (driver != null) {
 			driver.quit();
 		}
-  }
+	}
 
 }
